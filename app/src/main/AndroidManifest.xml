@@ -45,7 +45,15 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
+            android:name=".ViewParent"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
             android:name=".Identification"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".Inscription"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
