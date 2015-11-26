@@ -3,10 +3,13 @@ package com.example.user.localizone;
 /**
  * Created by Romain on 21/11/2015.
  */
+
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,6 +26,7 @@ public class MapActivity extends AppCompatActivity {
     private TextView locationText;
     private TextView addressText;
     private GoogleMap map;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,19 @@ public class MapActivity extends AppCompatActivity {
 
         //replace GOOGLE MAP fragment in this Activity
         replaceMapFragment();
+
+        listView = (ListView) findViewById(R.id.list);
+        String[] alertes = new String[]{"Alerte 1", "Alerte 2", "Alerte 3", "Alerte 4"};
+
+        // Définition de l'adapter
+        // Premier Paramètre - Context
+        // Second Paramètre - le Layout pour les Items de la Liste
+        // Troisième Paramètre - l'ID du TextView du Layout des Items
+        // Quatrième Paramètre - le Tableau de Données
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, alertes);
+
+        // on assigne l'adapter à notre liste
+        listView.setAdapter(adapter);
     }
 
     private void replaceMapFragment() {

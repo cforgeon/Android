@@ -1,6 +1,5 @@
 package com.example.user.localizone;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ViewEnfant extends AppCompatActivity {
+    private EditText mToken;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,23 @@ public class ViewEnfant extends AppCompatActivity {
             }
         });
 
+        final Button tokenButton = (Button) findViewById(R.id.affiche_token);
+        tokenButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewEnfant.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mToken = (EditText) findViewById(R.id.token);
+
+        PreferenceManager.getInstance(this).saveToken(mToken.getText().toString());
+
     }
+
+
 
 
 }
