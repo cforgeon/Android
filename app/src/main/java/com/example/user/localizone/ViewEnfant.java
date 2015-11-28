@@ -41,7 +41,7 @@ public class ViewEnfant extends AppCompatActivity {
 
         mToken = (EditText) findViewById(R.id.token);
 
-        PreferenceManager.getInstance(this).saveToken(mToken.getText().toString());
+        //PreferenceManager.getInstance(this).saveToken(mToken.getText().toString());
 
     }
 

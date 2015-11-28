@@ -61,14 +61,12 @@
             android:name=".MapActivity"
             android:label="@string/title_activity_main" >
         </activity>
-        <activity
+<!--        <activity>
             android:name=".PreferenceManager"
             android:label="@string/title_activity_main" >
         </activity>
-<<<<<<< HEAD
-=======
 
->>>>>>> 94ea2a1c3b022f5c181286d969871b3ca9010cd8
+ -->
     </application>
 
 
