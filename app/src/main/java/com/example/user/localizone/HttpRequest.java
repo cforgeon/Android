@@ -18,7 +18,7 @@ import java.net.URL;
  */
 public class HttpRequest {
 
-    private static String IP_PC="172.16.231.205";
+    private static String IP_PC="172.16.231.172";
 
     public static StringBuilder sendRequest(Context context,String urlLast){
 
