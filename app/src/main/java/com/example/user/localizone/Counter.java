@@ -2,9 +2,6 @@ package com.example.user.localizone;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import javax.xml.transform.Result;
 
 
 public class Counter extends AsyncTask<Void, Void, String> {
@@ -41,7 +38,7 @@ public class Counter extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String address) {
         // Call back Data and Display the current address in the UI
-        Log.d("thread count : ", "on envoie l'alerte !! ! ");
+        StringBuilder area =HttpRequest.sendRequest(null, "createNotifications/HJBUIB688G8G8/1.8877/8.79988/processing");
     }
 
 

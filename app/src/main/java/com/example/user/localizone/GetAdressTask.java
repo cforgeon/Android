@@ -59,9 +59,9 @@ public class GetAdressTask extends AsyncTask<String, Void, String> {
      * When the task finishes, onPostExecute() call back data to Activity UI and displays the address.
      * @param address
      */
-    @Override
+    /*@Override
     protected void onPostExecute(String address) {
         // Call back Data and Display the current address in the UI
         activity.callBackDataFromAsyncTask(address);
-    }
+    }*/
 }

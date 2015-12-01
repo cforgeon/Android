@@ -18,7 +18,7 @@ import java.net.URL;
  */
 public class HttpRequest {
 
-    private static String IP_PC="172.16.231.172";
+    private static String IP_PC="172.16.235.86";
 
     public static StringBuilder sendRequest(Context context,String urlLast){
 
@@ -41,7 +41,7 @@ public class HttpRequest {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
-            Toast.makeText(context, "HttpURLConnection", duration).show();
+           // Toast.makeText(context, "HttpURLConnection", duration).show();
             e.printStackTrace();
         }
         try {
@@ -51,9 +51,9 @@ public class HttpRequest {
             while ((line = r.readLine()) != null) {
                 total.append(line);
             }
-            Toast.makeText(context, total, duration).show();
+            //Toast.makeText(context, total, duration).show();
         } catch (IOException e) {
-            Toast.makeText(context, "server not found", duration).show();
+           // Toast.makeText(context, "server not found", duration).show();
             e.printStackTrace();
         }
 
