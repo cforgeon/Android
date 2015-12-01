@@ -6,9 +6,9 @@ package com.example.user.localizone;
 
 import android.graphics.Color;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.FloatMath;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class MapActivity extends AppCompatActivity {
@@ -37,6 +38,8 @@ public class MapActivity extends AppCompatActivity {
     private GoogleMap map;
     ListView listView;
     JSONArray the_json_array_area=null;
+    Boolean InZone;
+    AsyncTask counterTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,11 @@ public class MapActivity extends AppCompatActivity {
         addressText = (TextView) findViewById(R.id.address);
         checkzone = (TextView) findViewById(R.id.checkzone);
 
+        counterTask=new Counter(MapActivity.this);
+
         //replace GOOGLE MAP fragment in this Activity
         replaceMapFragment();
-       // displayAreaMap();
+         displayAreaMap();
         listView = (ListView) findViewById(R.id.list);
         String[] alertes = new String[]{"Alerte 1", "Alerte 2", "Alerte 3", "Alerte 4"};
 
@@ -93,9 +98,18 @@ public class MapActivity extends AppCompatActivity {
                 ////////////////////////////
                 // functioncheck in zone
                 if(the_json_array_area!=null){
-                    checkZone(latitudeCurrent,longitudeCurrent);
-
+                    InZone=checkZone(latitudeCurrent,longitudeCurrent);
                 }
+                //si l'enfant n'est pas dans la zone, on commence le compteur des 30s
+
+
+                    if(!InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
+                       // counterTask= new Counter(MapActivity.this).execute();
+                    }else if(!InZone && counterTask.getStatus() != AsyncTask.Status.RUNNING) {
+                        counterTask = new Counter(MapActivity.this).execute();
+                    }else if(InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
+                        counterTask.cancel(true);
+                    }
 
                 //get current address by invoke an AsyncTask object
                 new GetAdressTask(MapActivity.this).execute(String.valueOf(latitudeCurrent), String.valueOf(longitudeCurrent));
@@ -141,14 +155,14 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
-    public void checkZone(double latitudeCurrent, double longitudeCurrent){
+    public Boolean checkZone(double latitudeCurrent, double longitudeCurrent){
         Boolean checkinzone=false;
         int size_array =the_json_array_area.length();
         if(size_array>0){
             Log.d("TEST IF", " ok ko ok ok");
             ArrayList<JSONObject> arrays = new ArrayList<JSONObject>();
             for (int i = 0; i < size_array; i++) {
-                Log.d(" i ; ",String.valueOf(i));
+                //Log.d(" i ; ",String.valueOf(i));
                 JSONObject another_json_object = null;
                 try {
                     another_json_object = the_json_array_area.getJSONObject(i);
@@ -160,11 +174,11 @@ public class MapActivity extends AppCompatActivity {
 
                     double distancecalcule=Distance.distance(latitude2, longitude2, latitudeCurrent, longitudeCurrent, "metre");
 
-                    Log.d(" latitude2 ; ",String.valueOf(latitude2));
-                    Log.d(" longitude2 ; ",String.valueOf(longitude2));
-                    Log.d(" distance2 ; ",String.valueOf(distance2));
+                    //Log.d(" latitude2 ; ",String.valueOf(latitude2));
+                    //Log.d(" longitude2 ; ",String.valueOf(longitude2));
+                    //Log.d(" distance2 ; ",String.valueOf(distance2));
 
-                    Log.d(" distancecalcule ; ",String.valueOf(distancecalcule));
+                    //Log.d(" distancecalcule ; ",String.valueOf(i)+" : "+String.valueOf(distancecalcule));
                     if(distancecalcule<distance2){
                         checkinzone=true;
                     }
@@ -183,6 +197,7 @@ public class MapActivity extends AppCompatActivity {
                 checkzone.setText("You are not good mec ! Bouge de la");
             }
         }
+        return checkinzone;
     }
 
 
