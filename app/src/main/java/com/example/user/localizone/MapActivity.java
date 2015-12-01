@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.Circle;
@@ -27,7 +26,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 public class MapActivity extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         locationText = (TextView) findViewById(R.id.location);
-        addressText = (TextView) findViewById(R.id.address);
+        //addressText = (TextView) findViewById(R.id.address);
         checkzone = (TextView) findViewById(R.id.checkzone);
 
         counterTask=new Counter(MapActivity.this);
@@ -104,7 +102,7 @@ public class MapActivity extends AppCompatActivity {
 
 
                     if(!InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
-                       // counterTask= new Counter(MapActivity.this).execute();
+                       // rien
                     }else if(!InZone && counterTask.getStatus() != AsyncTask.Status.RUNNING) {
                         counterTask = new Counter(MapActivity.this).execute();
                     }else if(InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
@@ -112,14 +110,14 @@ public class MapActivity extends AppCompatActivity {
                     }
 
                 //get current address by invoke an AsyncTask object
-                new GetAdressTask(MapActivity.this).execute(String.valueOf(latitudeCurrent), String.valueOf(longitudeCurrent));
+                //new GetAdressTask(MapActivity.this).execute(String.valueOf(latitudeCurrent), String.valueOf(longitudeCurrent));
             }
         };
     }
 
-    public void callBackDataFromAsyncTask(String address) {
+   /* public void callBackDataFromAsyncTask(String address) {
         addressText.setText(address);
-    }
+    }*/
 
     public void displayAreaMap(){
         StringBuilder area =HttpRequest.sendRequest(getApplicationContext(), "getArea/HJBUIB688G8G8");
