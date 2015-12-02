@@ -43,7 +43,7 @@
         android:layout_marginTop="20dp"/>
 
     <Button
-        android:id="@+id/identify"
+        android:id="@+id/identification"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:text="IDENTIFY"

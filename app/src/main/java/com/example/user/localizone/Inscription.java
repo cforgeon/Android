@@ -23,8 +23,6 @@ public class Inscription extends AppCompatActivity {
             public void onClick(View v) {
                 EditText token = (EditText) findViewById(R.id.token);
                 inscription();
-                Intent intent = new Intent(Inscription.this, Inscription.class);
-                startActivity(intent);
             }
         });
 
@@ -34,7 +32,10 @@ public class Inscription extends AppCompatActivity {
     public void inscription(){
         EditText inscrMail = (EditText) findViewById(R.id.inscrMail);
         EditText inscrPassword = (EditText) findViewById(R.id.inscrPassword);
-      //  Log.d("toto", inscrMail.getText().toString());
-        HttpRequest.sendRequest(getApplicationContext(), "createUser/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString());
+        String res = (HttpRequest.sendRequest(getApplicationContext(), "createUser/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString());
+        if(!res.isEmpty()){
+            Intent intent = new Intent(Inscription.this, Inscription.class);
+            startActivity(intent);
+        }
     }
 }
