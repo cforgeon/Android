@@ -6,4 +6,5 @@
     <string name="mapKey">AIzaSyAu0UpJgD4QWd7tf06xegdAP3qsaGvD3m4</string>
     <string name="title_activity_map">LocaliZone - Map</string>
     <string name="title_view_enfant">LocaliZone</string>
+    <string name="errorConf"></string>
 </resources>
