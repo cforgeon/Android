@@ -95,6 +95,9 @@ public class MapActivity extends AppCompatActivity {
                 //map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
                 locationText.setText("You are at [" + longitudeCurrent + " ; " + latitudeCurrent + " ]");
 
+                Preferences.recordValue("latitude", String.valueOf(latitudeCurrent), getApplicationContext());
+                Preferences.recordValue("longitude", String.valueOf(longitudeCurrent), getApplicationContext());
+
                 ////////////////////////////
                 // functioncheck in zone
                 if(the_json_array_area!=null){
