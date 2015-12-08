@@ -65,13 +65,5 @@
             android:name=".MapActivityParent"
             android:label="@string/title_activity_main" >
         </activity>
-<!--        <activity>
-            android:name=".PreferenceManager"
-            android:label="@string/title_activity_main" >
-        </activity>
-
- -->
-    </application>
-
-
-</manifest>
+</application>
+    </manifest>
