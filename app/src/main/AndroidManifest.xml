@@ -61,12 +61,16 @@
             android:name=".MapActivity"
             android:label="@string/title_activity_main" >
         </activity>
-<!--        <activity>
+       <activity
             android:name=".PreferenceManager"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name=".Token"
+            android:label="@string/title_activity_main" >
+        </activity>
 
- -->
+
     </application>
 
 

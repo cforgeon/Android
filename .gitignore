@@ -13,3 +13,5 @@ gradlew.bat
 settings.gradle
 app/build.gradle
 app/proguard-rules.pro
+.gradle/
+*.iml
