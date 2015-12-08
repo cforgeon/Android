@@ -16,3 +16,5 @@ app/proguard-rules.pro
 .idea/gradle.xml
 .idea/misc.xml
 app/src/main/java/com/example/user/localizone/HttpRequest.java
+app/app.iml
+.idea/*
