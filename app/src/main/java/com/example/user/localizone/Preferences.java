@@ -1,13 +1,11 @@
 package com.example.user.localizone;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
  * Created by Romain on 08/12/2015.
  */
-
 
 public class Preferences {
 
