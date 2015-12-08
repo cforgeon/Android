@@ -23,21 +23,14 @@ public class ViewEnfant extends AppCompatActivity {
             public void onClick(View v) {
                 EditText token = (EditText) findViewById(R.id.token);
                 //HttpRequest.sendRequest(getApplicationContext(),"identificationChildren/"+token.getText().toString());
+                Preferences.recordValue("token",token.getText().toString(), getApplicationContext());
                 Intent intent = new Intent(ViewEnfant.this, MapActivity.class);
                 startActivity(intent);
             }
         });
 
 
-        final Button tokenButton = (Button) findViewById(R.id.affiche_token);
-        tokenButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewEnfant.this, Token.class);
-                startActivity(intent);
-            }
-        });
 
 
     }

@@ -15,26 +15,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
 
-        final Button enfantButton = (Button) findViewById(R.id.enfant);
-        enfantButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ViewEnfant.class);
-                startActivity(intent);
+
+
+            final Button enfantButton = (Button) findViewById(R.id.enfant);
+            enfantButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if(Preferences.getRecord("token",getApplicationContext())=="") {
+                    Intent intent = new Intent(MainActivity.this, ViewEnfant.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                    startActivity(intent);
+
+                }
             }
+
         });
 
-        final Button parentButton = (Button) findViewById(R.id.parent);
-        parentButton.setOnClickListener(new View.OnClickListener() {
+            final Button parentButton = (Button) findViewById(R.id.parent);
+            parentButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ViewParent.class);
-                startActivity(intent);
-            }
-        });
-    }
-}
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, ViewParent.class);
+                    startActivity(intent);
+                }
+            });
+
+            };
+
+        }
+
+
 
 

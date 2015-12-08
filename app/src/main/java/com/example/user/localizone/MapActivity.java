@@ -44,6 +44,8 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        Toast.makeText(getApplicationContext(),Preferences.getRecord("token",getApplicationContext()), Toast.LENGTH_LONG).show();
+
         locationText = (TextView) findViewById(R.id.location);
         //addressText = (TextView) findViewById(R.id.address);
         checkzone = (TextView) findViewById(R.id.checkzone);
