@@ -61,9 +61,9 @@
             android:name=".MapActivity"
             android:label="@string/title_activity_main" >
         </activity>
-
-
-    </application>
-
-
-</manifest>
+        <activity
+            android:name=".MapActivityParent"
+            android:label="@string/title_activity_main" >
+        </activity>
+</application>
+    </manifest>

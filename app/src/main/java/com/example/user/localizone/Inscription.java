@@ -71,7 +71,7 @@ public class Inscription extends AppCompatActivity {
             }
             else{
                 if (!res.isEmpty()) {
-                    Intent intent = new Intent(Inscription.this, Inscription.class);
+                    Intent intent = new Intent(Inscription.this, MapActivityParent.class);
                     startActivity(intent);
                 }
             }
