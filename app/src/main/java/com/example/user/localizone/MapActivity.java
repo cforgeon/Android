@@ -52,7 +52,7 @@ public class MapActivity extends AppCompatActivity {
 
         //replace GOOGLE MAP fragment in this Activity
         replaceMapFragment();
-         displayAreaMap();
+        displayAreaMap();
         listView = (ListView) findViewById(R.id.list);
         String[] alertes = new String[]{"Alerte 1", "Alerte 2", "Alerte 3", "Alerte 4"};
 
