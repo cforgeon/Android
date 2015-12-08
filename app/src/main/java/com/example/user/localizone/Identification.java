@@ -38,7 +38,7 @@ public class Identification extends AppCompatActivity {
         EditText inscrPassword = (EditText) findViewById(R.id.identPassword);
         String res = (HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString());
         if(res.equals("AUTHORIZED")) {
-            Intent intent = new Intent(Identification.this, Identification.class);
+            Intent intent = new Intent(Identification.this, MapActivityParent.class);
             startActivity(intent);
         }
     }
