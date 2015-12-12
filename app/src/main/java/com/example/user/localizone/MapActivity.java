@@ -130,7 +130,7 @@ public class MapActivity extends AppCompatActivity {
     }*/
 
     public void displayAreaMap(){
-        StringBuilder area =HttpRequest.sendRequest(getApplicationContext(), "getArea/HJBUIB688G8G8");
+        StringBuilder area =HttpRequest.sendRequest(getApplicationContext(), "getArea/"+Preferences.getRecord("token",getApplicationContext()));
         JSONObject jsonObject=null;
 
         try {
