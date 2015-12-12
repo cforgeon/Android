@@ -5,6 +5,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class Counter extends AsyncTask<Void, Void, String> {
@@ -22,6 +23,7 @@ public class Counter extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
 
+       // Toast.makeText(activity.getApplicationContext(), "Vous avez à partir de cette instant 30 secondes pour revenir dans la zone", Toast.LENGTH_LONG).show();
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
@@ -30,9 +32,7 @@ public class Counter extends AsyncTask<Void, Void, String> {
         String token= Preferences.getRecord("token",activity.getApplicationContext());
         String latitude= Preferences.getRecord("latitude", activity.getApplicationContext());
         String longitude= Preferences.getRecord("longitude", activity.getApplicationContext());
-
         StringBuilder area =HttpRequest.sendRequest(null, "createNotifications/"+token+"/"+latitude+"/"+longitude+"/processing");
-
 
         return null;
     }

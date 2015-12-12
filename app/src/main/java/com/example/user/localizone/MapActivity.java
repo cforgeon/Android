@@ -107,11 +107,16 @@ public class MapActivity extends AppCompatActivity {
 
 
                     if(!InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
-                       // rien
+                        //si il n'est pas dans la zone et que le compteur tourne
                     }else if(!InZone && counterTask.getStatus() != AsyncTask.Status.RUNNING) {
+                        //si il n'est pas dans la zone et que le compteur ne tourne pas
                         counterTask = new Counter(MapActivity.this).execute();
                     }else if(InZone && counterTask.getStatus() == AsyncTask.Status.RUNNING){
+                        // cela signifie que la personne revient dans une zone
+                        // on va doit envoyer une requete au serveur pour avertir la fin de sortie de zone
+                        String token= Preferences.getRecord("token",getApplicationContext());
                         counterTask.cancel(true);
+                        HttpRequest.sendRequest(null, "createNotifications/" + token + "/" + latitudeCurrent + "/" + longitudeCurrent + "/over");
                     }
 
                 //get current address by invoke an AsyncTask object
