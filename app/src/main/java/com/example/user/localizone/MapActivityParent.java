@@ -46,6 +46,7 @@ public class MapActivityParent extends AppCompatActivity {
         setContentView(R.layout.activity_mapparent);
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
+        notification();
         tokenView = (TextView) findViewById(R.id.viewtoken);
         tokenView.setText(token);
 
@@ -70,6 +71,10 @@ public class MapActivityParent extends AppCompatActivity {
 
         // on assigne l'adapter à notre liste
         listView.setAdapter(adapter);
+    }
+
+    private void notification(){
+     //   String notif = (HttpRequest.sendRequest(getApplicationContext(), "getNotifications"/"HJBUIB688G8G8".toString()).toString());
     }
 
     private void replaceMapFragment() {

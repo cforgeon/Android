@@ -36,6 +36,7 @@ public class Identification extends AppCompatActivity {
 
 
     public void identification(){
+
         EditText inscrMail = (EditText) findViewById(R.id.identMail);
         EditText inscrPassword = (EditText) findViewById(R.id.identPassword);
         String res = HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString();
