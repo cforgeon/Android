@@ -47,8 +47,9 @@ public class Inscription extends AppCompatActivity {
         password = (EditText) findViewById(R.id.inscrPassword);
         textError = (TextView) findViewById(R.id.textErrorConf);
 
-        if(password.getText().toString().length()<6){
+        if(password.getText().toString().length()< 6)
             textError.setText("password too short: 6 character minimum");
+        else{
             if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
                 boolMail = true;
 
