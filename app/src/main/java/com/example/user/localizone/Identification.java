@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Identification extends AppCompatActivity {
@@ -37,8 +38,9 @@ public class Identification extends AppCompatActivity {
     public void identification(){
         EditText inscrMail = (EditText) findViewById(R.id.identMail);
         EditText inscrPassword = (EditText) findViewById(R.id.identPassword);
-        String res = (HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString());
-        if(!res.equals("UNAUTHORIZED")) {
+        String res = HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString();
+        Toast.makeText(getApplicationContext(),res, Toast.LENGTH_SHORT).show();
+       if(!res.equals("UNAUTHORIZED")) {
             Intent intent = new Intent(Identification.this, MapActivityParent.class);
             intent.putExtra("token", res);
             startActivity(intent);
