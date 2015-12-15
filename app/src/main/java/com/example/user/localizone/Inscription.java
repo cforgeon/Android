@@ -47,19 +47,21 @@ public class Inscription extends AppCompatActivity {
         password = (EditText) findViewById(R.id.inscrPassword);
         textError = (TextView) findViewById(R.id.textErrorConf);
 
-        if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
-            boolMail = true;
+        if(password.getText().toString().length()<6){
+            textError.setText("password too short: 6 character minimum");
+            if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
+                boolMail = true;
 
-            if(confPassword.getText().toString().equals(password.getText().toString()) && confPassword.getText().toString()!="" && confPassword.getText().toString()!=" ") {
-                boolPass = true;
-                System.out.println(confPassword.getText().toString() + password.getText().toString());
+                if(confPassword.getText().toString().equals(password.getText().toString()) && confPassword.getText().toString()!="" && confPassword.getText().toString()!=" ") {
+                    boolPass = true;
+                }
+                else{
+                    textError.setText("Error password confirmation");
+                }
             }
             else{
-                textError.setText("Error password confirmation");
+                textError.setText("Error mail confirmation");
             }
-        }
-        else{
-            textError.setText("Error mail confirmation");
         }
 
         if(boolMail == true && boolPass == true ){

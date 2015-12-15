@@ -35,10 +35,10 @@ public class Identification extends AppCompatActivity {
 
 
     public void identification(){
-        EditText inscrMail = (EditText) findViewById(R.id.identMail);
-        EditText inscrPassword = (EditText) findViewById(R.id.identPassword);
-        String res = (HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + inscrMail.getText().toString() + "/" + inscrPassword.getText().toString()).toString());
-        if(!res.equals("UNAUTHORIZED")) {
+        EditText identMail = (EditText) findViewById(R.id.identMail);
+        EditText identPassword = (EditText) findViewById(R.id.identPassword);
+        String res = (HttpRequest.sendRequest(getApplicationContext(), "identificationParent/" + identMail.getText().toString() + "/" + identPassword.getText().toString()).toString());
+        if(!res.equals("UNAUTHORIZED") ) {
             Intent intent = new Intent(Identification.this, MapActivityParent.class);
             intent.putExtra("token", res);
             startActivity(intent);
