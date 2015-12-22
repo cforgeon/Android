@@ -17,10 +17,13 @@ public class Inscription extends AppCompatActivity {
     private TextView textError;
     private boolean boolMail;
     private boolean boolPass;
+    private boolean flag;
+
 
     public Inscription(){
         boolMail = false;
         boolPass = false;
+        boolean flag = false;
     }
 
     @Override
@@ -47,22 +50,31 @@ public class Inscription extends AppCompatActivity {
         password = (EditText) findViewById(R.id.inscrPassword);
         textError = (TextView) findViewById(R.id.textErrorConf);
 
-        if(password.getText().toString().length()< 6)
-            textError.setText("password too short: 6 character minimum");
-        else{
-            if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
-                boolMail = true;
 
-                if(confPassword.getText().toString().equals(password.getText().toString()) && confPassword.getText().toString()!="" && confPassword.getText().toString()!=" ") {
-                    boolPass = true;
+
+        if (mail.getText().toString().matches("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")) {
+            flag = true;
+
+           if(password.getText().toString().length()< 6)
+                textError.setText("password too short: 6 characters minimum");
+            else{
+                if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
+                    boolMail = true;
+
+                    if(confPassword.getText().toString().equals(password.getText().toString()) && confPassword.getText().toString()!="" && confPassword.getText().toString()!=" ") {
+                        boolPass = true;
+                    }
+                    else{
+                        textError.setText("Error password confirmation");
+                    }
                 }
                 else{
-                    textError.setText("Error password confirmation");
+                    textError.setText("Error mail confirmation");
                 }
             }
-            else{
-                textError.setText("Error mail confirmation");
-            }
+        }
+        else{
+            textError.setText("Your email address is not correct");
         }
 
         if(boolMail == true && boolPass == true ){
