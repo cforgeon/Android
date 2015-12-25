@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MapActivityParent extends AppCompatActivity {
@@ -36,6 +37,7 @@ public class MapActivityParent extends AppCompatActivity {
     private GoogleMap map;
     private TextView tokenView;
     ListView listView;
+    JSONArray the_json_array_notif = null;
     JSONArray the_json_array_area = null;
     Boolean InZone;
     AsyncTask counterTask;
@@ -46,35 +48,71 @@ public class MapActivityParent extends AppCompatActivity {
         setContentView(R.layout.activity_mapparent);
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
-        notification();
+        ArrayList<String[]> arrayNotif = notification(token);
         tokenView = (TextView) findViewById(R.id.viewtoken);
         tokenView.setText(token);
 
         locationText = (TextView) findViewById(R.id.location);
-        //addressText = (TextView) findViewById(R.id.address);
         checkzone = (TextView) findViewById(R.id.checkzone);
-
-        // counterTask=new Counter(MapActivityParent.this);
 
         //replace GOOGLE MAP fragment in this Activity
         replaceMapFragment();
         displayAreaMap();
-        listView = (ListView) findViewById(R.id.list);
-        String[] alertes = new String[]{"Alerte 1", "Alerte 2", "Alerte 3", "Alerte 4"};
 
-        // Définition de l'adapter
-        // Premier Paramètre - Context
-        // Second Paramètre - le Layout pour les Items de la Liste
-        // Troisième Paramètre - l'ID du TextView du Layout des Items
-        // Quatrième Paramètre - le Tableau de Données
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MapActivityParent.this, android.R.layout.simple_list_item_1, android.R.id.text1, alertes);
+        listView = (ListView) findViewById(R.id.listView);
 
-        // on assigne l'adapter à notre liste
+        List<Notification> Notif = genererNotifications(arrayNotif);
+
+        NotificationAdapter adapter = new NotificationAdapter(MapActivityParent.this, Notif);
         listView.setAdapter(adapter);
     }
 
-    private void notification(){
-     //   String notif = (HttpRequest.sendRequest(getApplicationContext(), "getNotifications"/"HJBUIB688G8G8".toString()).toString());
+    private List<Notification> genererNotifications(ArrayList<String[]> arrayNotif) {
+        List<Notification> Notifications = new ArrayList<Notification>();
+        for (int i = 0; i < arrayNotif.size(); i++) {
+            Notifications.add(new Notification(arrayNotif.get(i)[0], arrayNotif.get(i)[1], arrayNotif.get(i)[2]));
+        }
+        return Notifications;
+    }
+
+    private ArrayList<String[]> notification(String token) {
+        StringBuilder notification = HttpRequest.sendRequest(getApplicationContext(), "getNotifications/"+token);
+        JSONObject jsonObject = null;
+        ArrayList<String[]> listNotif = new ArrayList<String[]>();
+
+        String latitude = "";
+        String longitude = "";
+        String date = "";
+
+        try {
+            jsonObject = new JSONObject(notification.toString());
+            System.out.println(jsonObject);
+            the_json_array_notif = jsonObject.getJSONArray("notification");
+            int size = the_json_array_notif.length();
+            ArrayList<JSONObject> arrays = new ArrayList<JSONObject>();
+            for (int i = 0; i < size; i++) {
+                JSONObject another_json_object = the_json_array_notif.getJSONObject(i);
+                String[] tabNotif = new String[3];
+
+                arrays.add(another_json_object);
+                latitude = String.valueOf(another_json_object.getDouble("latitude"));
+                longitude = String.valueOf(another_json_object.getDouble("longitude"));
+                date = String.valueOf(another_json_object.getString("date"));
+
+                tabNotif[0] = latitude;
+                tabNotif[1] = longitude;
+                tabNotif[2] = date;
+
+                listNotif.add(tabNotif);
+            }
+            return listNotif;
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return listNotif;
     }
 
     private void replaceMapFragment() {
@@ -105,7 +143,7 @@ public class MapActivityParent extends AppCompatActivity {
                 Double longitude = another_json_object.getDouble("longitude");
                 Integer distance = another_json_object.getInt("distance");
 
-                Log.d("Myapp", distance.toString());
+                Log.d("Myapp", latitude.toString());
 
                 Circle circle = map.addCircle(new CircleOptions()
                         .center(new LatLng(latitude, longitude))
