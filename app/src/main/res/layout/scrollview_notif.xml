@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/notifLatitudeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Latitude :"
+                />
+
+            <TextView
+                android:id="@+id/notifLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:padding="5dip"
+                tools:text="Latitude"
+                />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/notifLongitudeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_alignLeft="@+id/notifLatitude"
+                android:text="Longitude :"
+                />
+
+            <TextView
+                android:id="@+id/notifLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_alignLeft="@+id/notifLatitude"
+                android:padding="5dip"
+                tools:text="Longitude"
+                />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/notifDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_alignLeft="@+id/notifLongitude"
+                android:layout_below="@+id/notifLongitude"
+                android:text="Date :"
+                />
+            <TextView
+                android:id="@+id/notifDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_alignLeft="@+id/notifLongitude"
+                android:layout_below="@+id/notifLongitude"
+                android:padding="5dip"
+                tools:text="Date"
+                />
+        </TableRow>
+        <TableRow> </TableRow>
+    </TableLayout>
+</RelativeLayout>

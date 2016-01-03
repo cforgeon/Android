@@ -9,11 +9,8 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -57,7 +54,7 @@ public class MapActivityParent extends AppCompatActivity {
 
         //replace GOOGLE MAP fragment in this Activity
         replaceMapFragment();
-        displayAreaMap();
+        displayAreaMap(token);
 
         listView = (ListView) findViewById(R.id.listView);
 
@@ -126,8 +123,8 @@ public class MapActivityParent extends AppCompatActivity {
         map.setMyLocationEnabled(true);
     }
 
-    public void displayAreaMap() {
-        StringBuilder area = HttpRequest.sendRequest(getApplicationContext(), "getArea/HJBUIB688G8G8");
+    public void displayAreaMap(String token) {
+        StringBuilder area = HttpRequest.sendRequest(getApplicationContext(), "getArea/"+token);
         JSONObject jsonObject = null;
 
         try {
@@ -143,7 +140,7 @@ public class MapActivityParent extends AppCompatActivity {
                 Double longitude = another_json_object.getDouble("longitude");
                 Integer distance = another_json_object.getInt("distance");
 
-                Log.d("Myapp", latitude.toString());
+               // Log.d("Myapp", latitude.toString());
 
                 Circle circle = map.addCircle(new CircleOptions()
                         .center(new LatLng(latitude, longitude))
@@ -156,6 +153,6 @@ public class MapActivityParent extends AppCompatActivity {
         }
 
 
-        Toast.makeText(getApplicationContext(), area.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), area.toString(), Toast.LENGTH_LONG).show();
     }
 }
