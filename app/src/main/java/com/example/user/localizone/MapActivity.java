@@ -4,17 +4,14 @@ package com.example.user.localizone;
  * Created by Romain on 21/11/2015.
  */
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -140,7 +137,7 @@ public class MapActivity extends AppCompatActivity {
                 //Marker marker;
                 //marker = map.addMarker(new MarkerOptions().position(loc));
                 //map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
-                locationText.setText("You are at [" + longitudeCurrent + " ; " + latitudeCurrent + " ]");
+                locationText.setText("Vous êtes à [" + longitudeCurrent + " ; " + latitudeCurrent + " ]");
 
                 Preferences.recordValue("latitude", String.valueOf(latitudeCurrent), getApplicationContext());
                 Preferences.recordValue("longitude", String.valueOf(longitudeCurrent), getApplicationContext());
@@ -214,7 +211,7 @@ public class MapActivity extends AppCompatActivity {
         Boolean checkinzone=false;
         int size_array =the_json_array_area.length();
         if(size_array>0){
-            Log.d("TEST IF", " ok ko ok ok");
+            Log.d("TEST IF", " ok ok ok ok");
             ArrayList<JSONObject> arrays = new ArrayList<JSONObject>();
             for (int i = 0; i < size_array; i++) {
                 //Log.d(" i ; ",String.valueOf(i));
@@ -246,10 +243,10 @@ public class MapActivity extends AppCompatActivity {
 
             if(checkinzone){
                 Log.d(" functioncheck" , "dans la zone");
-                checkzone.setText("You are good");
+                checkzone.setText("Vous êtes dans la zone");
             }else{
                 Log.d(" functioncheck" , " pas  dans la zone");
-                checkzone.setText("You are not good mec ! Bouge de la");
+                checkzone.setText("Vous n'êtes pas dans la zone, veuillez y retourner.");
             }
         }
         return checkinzone;

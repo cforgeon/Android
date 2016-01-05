@@ -56,7 +56,7 @@ public class Inscription extends AppCompatActivity {
             flag = true;
 
            if(password.getText().toString().length()< 6)
-                textError.setText("password too short: 6 characters minimum");
+                textError.setText("Mot de passe trop court: 6 caractères minimum");
             else{
                 if(confMail.getText().toString().equals(mail.getText().toString()) && confMail.getText().toString()!="" && confMail.getText().toString()!=" ") {
                     boolMail = true;
@@ -65,16 +65,16 @@ public class Inscription extends AppCompatActivity {
                         boolPass = true;
                     }
                     else{
-                        textError.setText("Error password confirmation");
+                        textError.setText("Confirmation de mot de passe erronée");
                     }
                 }
                 else{
-                    textError.setText("Error mail confirmation");
+                    textError.setText("Confirmation de mail erronée");
                 }
             }
         }
         else{
-            textError.setText("Your email address is not correct");
+            textError.setText("Votre adresse mail n'est pas correcte");
         }
 
         if(boolMail == true && boolPass == true ){
@@ -82,7 +82,7 @@ public class Inscription extends AppCompatActivity {
             boolMail = false;
             boolPass = false;
             if(res.equals("adresse email already exist")){
-                textError.setText("Error adresse email already exist");
+                textError.setText("Adresse mail dejà existante");
             }
             else{
                 if (!res.isEmpty()) {

@@ -19,15 +19,17 @@
 
       <Button
             android:id="@+id/ident"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:width="250dp"
             android:height="70dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="50dp"
             android:text="Identification"
-            android:background="@drawable/buttonparent"/>
+            android:textSize="22sp"
+            android:textColor="#22427C"/>
+
         <Button
             android:id="@+id/inscr"
             android:layout_width="fill_parent"
@@ -35,7 +37,8 @@
             android:layout_centerInParent="true"
             android:height="70dp"
             android:text="Inscription"
-            android:background="@drawable/buttonparent"/>
+            android:textSize="22sp"
+            android:textColor="#22427C"/>
 
 
 </LinearLayout>

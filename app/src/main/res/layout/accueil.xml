@@ -16,19 +16,19 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:text="WELCOME ON LOCALIZONE !"
+        android:text="BIENVENU SUR LOCALIZONLES !"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/parent"
         android:layout_centerInParent="true"
         android:layout_marginBottom="85dip"
         android:textColor="#22427C"
-        android:textSize="23sp"
+        android:textSize="22sp"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView2"
-        android:text="Please choose your status :"
+        android:text="Choisissez votre statut :"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

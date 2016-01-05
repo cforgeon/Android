@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayoutx
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:id="@+id/token"
         android:layout_width="250dp"
         android:layout_height="70dp"
-        android:hint="Enter your TOKEN"
+        android:hint="Entrer votre TOKEN"
         android:textAlignment="center"
         android:inputType="text"
         android:textColor="#22427C"
@@ -34,7 +34,7 @@
         android:id="@+id/accessMap"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:text="VALIDATE"
+        android:text="VALIDER"
         android:textSize="18dp"
         android:textColor="#22427C"
         android:layout_gravity="center_horizontal"
@@ -45,4 +45,4 @@
         android:layout_centerHorizontal="true" />
 
 
-</LinearLayoutx>
+</LinearLayout>

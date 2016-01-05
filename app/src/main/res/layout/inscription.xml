@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="#000055"
+        android:textColor="#F60000"
         android:textSize="35sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
@@ -34,21 +34,21 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="5dp"
         android:textStyle="bold"
-        android:textColor="#EC5E5E"/>
-        />
+        android:textColor="#22427C"/>
 
     <EditText
         android:id="@+id/inscrMail"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:hint="Enter your Mail"
+        android:hint="Entrer votre Mail"
         android:textAlignment="center"
         android:inputType="text"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_gravity="center_horizontal"
+
         android:layout_marginTop="0dp"
         android:textColor="#22427C"/>
 
@@ -56,11 +56,10 @@
         android:id="@+id/inscrConfMail"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:hint="Confirm your Mail"
+        android:hint="Confirmer votre Mail"
         android:textAlignment="center"
         android:inputType="text"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_gravity="center_horizontal"
         android:textColor="#22427C"
         android:layout_marginTop="20dp"/>
 
@@ -68,12 +67,11 @@
         android:id="@+id/inscrPassword"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:hint="Enter your Password"
+        android:hint="Entrer votre Mot de Passe"
         android:textAlignment="center"
         android:inputType="textPassword"
         android:layout_above="@+id/mail"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_gravity="center_horizontal"
         android:textColor="#22427C"
         android:layout_marginTop="20dp"/>
 
@@ -81,12 +79,11 @@
         android:id="@+id/inscrConfpassword"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:hint="Confirm your Password"
+        android:hint="Confirmer votre Mot de Passe"
         android:textAlignment="center"
         android:inputType="textPassword"
         android:layout_above="@+id/mail"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_gravity="center_horizontal"
         android:textColor="#22427C"
         android:layout_marginTop="20dp"/>
 
@@ -101,8 +98,8 @@
         android:textSize="18dp"
         android:text="S'INSCRIRE"
         android:layout_marginTop="30dp"
-        android:textColor="#000000"
-        android:background="@drawable/buttonparent"/>
+        android:textColor="#22427C"
+        android:background="#EC5E5E"/>
 
     </LinearLayout>
 </RelativeLayout>
