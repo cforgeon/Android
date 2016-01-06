@@ -6,9 +6,12 @@ package com.example.user.localizone;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,6 +46,16 @@ public class MapActivityParent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapparent);
+
+        final Button zoneButton = (Button) findViewById(R.id.ajout_zone);
+        zoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View p) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.0.15:8080/SpringMVC/home"));
+                startActivity(intent);
+            }
+        });
+
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
         ArrayList<String[]> arrayNotif = notification(token);
@@ -155,4 +168,7 @@ public class MapActivityParent extends AppCompatActivity {
 
         //Toast.makeText(getApplicationContext(), area.toString(), Toast.LENGTH_LONG).show();
     }
+
+
+
 }

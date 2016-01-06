@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,44 +7,69 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"  tools:context=".LocationActivity"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:weightSum="1">
 
 
         <fragment
             android:id="@+id/map"
             class="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
-            android:layout_height="250dp"/>
+            android:layout_height="270dp"/>
 
         <TextView
             android:id="@+id/location"
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="10dp"/>
 
-        <TextView
-            android:id="@+id/viewtoken"
-            android:text=""
+
+    <Button
+        android:id="@+id/ajout_zone"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une zone"
+        android:textSize="18sp"
+        android:textColor="#22427C"
+        android:layout_gravity="right"
+        android:layout_below="@+id/map"
+        android:layout_alignRight="@+id/map"
+        android:layout_alignEnd="@+id/map"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/viewtoken"
+        android:text=""
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/map"
+        android:layout_toLeftOf="@+id/ajout_zone"
+        android:layout_toStartOf="@+id/ajout_zone"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:text="Notifications de sortie de zone:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="#F7A1A1"
+        android:layout_below="@+id/ajout_zone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/text"
-                android:text="Notifications de sortie de zone:"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:background="#F7A1A1"
-                android:layout_marginTop="10dp"/>
+            android:layout_height="135dp"
+            android:layout_below="@+id/text"
+            android:background="#F7A1A1">
+        </ListView>
 
 
-            <ListView
-                android:id="@+id/listView"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_below="@+id/text"
-                android:background="#F7A1A1">
-            </ListView>
-</LinearLayout>
+
+
+</RelativeLayout>
 
 

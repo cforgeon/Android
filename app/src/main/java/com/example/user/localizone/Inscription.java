@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Inscription extends AppCompatActivity {
@@ -79,6 +80,7 @@ public class Inscription extends AppCompatActivity {
 
         if(boolMail == true && boolPass == true ){
             String res = (HttpRequest.sendRequest(getApplicationContext(), "createUser/" + mail.getText().toString() + "/" + password.getText().toString()).toString());
+            Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
             boolMail = false;
             boolPass = false;
             if(res.equals("adresse email already exist")){
@@ -87,6 +89,7 @@ public class Inscription extends AppCompatActivity {
             else{
                 if (!res.isEmpty()) {
                     Intent intent = new Intent(Inscription.this, MapActivityParent.class);
+                    intent.putExtra("token", res);
                     startActivity(intent);
                 }
             }
