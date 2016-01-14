@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -88,7 +89,7 @@ public class MapActivity extends AppCompatActivity {
             the_json_array_notif = jsonObject.getJSONArray("notification");
             int size = the_json_array_notif.length();
             ArrayList<JSONObject> arrays = new ArrayList<JSONObject>();
-            for (int i = size-4; i < size; i++) {
+            for (int i = size-1; i >= size-4; i--) {
                 JSONObject another_json_object = the_json_array_notif.getJSONObject(i);
                 String[] tabNotif = new String[3];
 
@@ -161,7 +162,14 @@ public class MapActivity extends AppCompatActivity {
                         String token= Preferences.getRecord("token",getApplicationContext());
                         counterTask.cancel(true);
                         HttpRequest.sendRequest(null, "createNotifications/" + token + "/" + latitudeCurrent + "/" + longitudeCurrent + "/over");
+
+                        ArrayList<String[]> arrayNotif2 = notification(token);
+                        ListView lv = (ListView)findViewById(R.id.list);
+                        NotificationAdapter adapter2 = new NotificationAdapter(MapActivity.this, genererNotifications(arrayNotif2));
+                        lv.setAdapter(adapter2);
+
                     }
+
 
                 //get current address by invoke an AsyncTask object
                 //new GetAdressTask(MapActivity.this).execute(String.valueOf(latitudeCurrent), String.valueOf(longitudeCurrent));

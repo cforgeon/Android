@@ -23,16 +23,16 @@ public class Notification{
     public String getLongitude() {
         return longitude;
     }
-
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
     public String getDate() {
         return date;
     }
-
     public void setDate(String date) {
         this.date = date;
     }
+
 
 }
